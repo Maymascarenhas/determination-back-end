@@ -1,5 +1,6 @@
 package com.br.dtermination.dtermination.controller;
 
+import com.br.dtermination.dtermination.model.Credenciais;
 import com.br.dtermination.dtermination.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,10 +20,10 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> existeUsuario(@RequestBody service.Credenciais credenciais) {
+    public ResponseEntity<String> logarUsuario(@RequestBody Credenciais credenciais) {
         if (usuarioRepository.validaLoginESenha(credenciais) == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Failed");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Falhou");
         }
-        return ResponseEntity.ok("Success");
+        return ResponseEntity.ok("Sucesso");
     }
 }

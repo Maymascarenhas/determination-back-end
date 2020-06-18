@@ -1,5 +1,6 @@
 package com.br.dtermination.dtermination.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,16 +9,21 @@ public class Ficha  {
 
  public Ficha() {}
 
- @Id
- @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Long id;
+
  @JsonProperty
-    Long id;
+ @OneToOne
+ @JoinColumn(name = "id_usuario")
+  private Usuario usuario;
+
     @JsonProperty
-  private int forca;
+    private int forca;
     @JsonProperty
     private int habilidade;
     @JsonProperty
-   private int resistencia;
+    private int resistencia;
     @JsonProperty
     private int armadura;
     @JsonProperty
@@ -30,30 +36,22 @@ public class Ficha  {
     private int pontoExperiencia;
     @JsonProperty
     private String historia;
-
-    @ElementCollection(targetClass=String.class)
     @JsonProperty
-    List<String> vantagens;
-
-    @ElementCollection(targetClass=String.class)
+    private String vantagens;
     @JsonProperty
-    List<String> desvantagens;
-
-    @ElementCollection(targetClass=String.class)
+    private String desvantagens;
     @JsonProperty
-    List<String> tipoDano;
-
-    @ElementCollection(targetClass=String.class)
+    private String tipoDano;
     @JsonProperty
-    List<String> magiasConhecidas;
-    @ElementCollection(targetClass=String.class)
+    private String magiasConhecidas;
     @JsonProperty
-    List<String> dinheiroItens;
+    private String dinheiroItens;
 
 
     public int getForca(){
         return forca;
     }
+
      public void setForca( int forca){
          this.forca = forca;
         }
@@ -114,38 +112,38 @@ public class Ficha  {
         this.pontoExperiencia = pontoExperiencia;
     }
 
-    public List<String> getVantagens(){
+    String getVantagens(){
         return this.vantagens;
     }
-    public void setVantagens(List<String> vantagens) {
+    public void setVantagens(String vantagens) {
         this.vantagens = vantagens;
     }
-    public List<String> getDesvantagens(){
+    String getDesvantagens(){
         return this.desvantagens;
     }
-    public void setDesvantagens(List<String> desvantagens) {
+    public void setDesvantagens(String desvantagens) {
         this.desvantagens = desvantagens;
     }
-    public List<String> getTipoDano(){
+    String getTipoDano(){
         return this.tipoDano;
     }
-    public void setTipoDano(List<String> tipoDano) {
+    public void setTipoDano(String tipoDano) {
         this.tipoDano = tipoDano;
     }
-    public List<String> getMagiasConhecidas(){
+    String getMagiasConhecidas(){
         return this.magiasConhecidas;
     }
-    public void setMagiasConhecidas(List<String> magiasConhecidas) {
+    public void setMagiasConhecidas(String magiasConhecidas) {
         this.magiasConhecidas = magiasConhecidas;
     }
-    public List<String> getDinheiroItens(){
+    String getDinheiroItens(){
         return this.dinheiroItens;
     }
-    public void setDinheiroItens(List<String> dinheiroItens){
+    public void setDinheiroItens(String dinheiroItens){
         this.dinheiroItens = dinheiroItens;
     }
 
-    public Ficha(int forca, int habilidade, int resistencia, int armadura, int poderFogo, int pontosVida, int pontoMagia, int pontoExperiencia, String historia, List<String> vantagens, List<String> desvantagens, List<String> tipoDano, List<String> magiasConhecidas, List<String> dinheiroItens) {
+    public Ficha(int forca, int habilidade, int resistencia, int armadura, int poderFogo, int pontosVida, int pontoMagia, int pontoExperiencia, String historia,String vantagens,String desvantagens,String tipoDano,String magiasConhecidas,String dinheiroItens) {
         this.forca = forca;
         this.habilidade = habilidade;
         this.resistencia = resistencia;
