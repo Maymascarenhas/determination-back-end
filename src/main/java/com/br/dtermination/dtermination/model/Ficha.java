@@ -19,8 +19,6 @@ public class Ficha  {
   private Usuario usuario;
 
     @JsonProperty
-    private String nome;
-    @JsonProperty
     private int forca;
     @JsonProperty
     private int habilidade;
@@ -49,9 +47,18 @@ public class Ficha  {
     @JsonProperty
     private String dinheiroItens;
     @JsonProperty
-    private int pontosTotais;
+    private String nome;
+    @JsonProperty
+    private int pontosTotal;
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     public int getForca(){
         return forca;
     }
@@ -59,6 +66,15 @@ public class Ficha  {
      public void setForca( int forca){
          this.forca = forca;
         }
+     
+     public int getPontosTotal(){
+         return pontosTotal;
+     }
+
+      public void setPontosTotal( int pontosTotal){
+          this.pontosTotal = pontosTotal;
+         }
+     
 
       public int getHabilidade(){
         return habilidade;
@@ -125,9 +141,18 @@ public class Ficha  {
     String getDesvantagens(){
         return this.desvantagens;
     }
+    
     public void setDesvantagens(String desvantagens) {
         this.desvantagens = desvantagens;
     }
+    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    String getNome(){
+        return this.nome;
+    }
+    
     String getTipoDano(){
         return this.tipoDano;
     }
@@ -147,7 +172,7 @@ public class Ficha  {
         this.dinheiroItens = dinheiroItens;
     }
 
-    public Ficha(int forca, int habilidade, int resistencia, int armadura, int poderFogo, int pontosVida, int pontoMagia, int pontoExperiencia, String historia,String vantagens,String desvantagens,String tipoDano,String magiasConhecidas,String dinheiroItens) {
+    public Ficha(int forca, int habilidade, int resistencia, int armadura, int poderFogo, int pontosVida, int pontosTotal,int pontoMagia, int pontoExperiencia, String historia,String vantagens,String desvantagens,String tipoDano,String magiasConhecidas,String dinheiroItens, String nome) {
         this.forca = forca;
         this.habilidade = habilidade;
         this.resistencia = resistencia;
@@ -155,6 +180,7 @@ public class Ficha  {
         this.poderFogo = poderFogo;
         this.pontosVida = pontosVida;
         this.pontoMagia = pontoMagia;
+        this.pontosTotal = pontosTotal;
         this.pontoExperiencia = pontoExperiencia;
         this.historia = historia;
         this.vantagens = vantagens;
@@ -162,6 +188,8 @@ public class Ficha  {
         this.tipoDano = tipoDano;
         this.magiasConhecidas = magiasConhecidas;
         this.dinheiroItens = dinheiroItens;
+        this.nome = nome;
+       
     }
 }
 
