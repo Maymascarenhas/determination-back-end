@@ -19,6 +19,8 @@ public class Ficha  {
   private Usuario usuario;
 
     @JsonProperty
+    private String nome;
+    @JsonProperty
     private int forca;
     @JsonProperty
     private int habilidade;
@@ -46,6 +48,8 @@ public class Ficha  {
     private String magiasConhecidas;
     @JsonProperty
     private String dinheiroItens;
+    @JsonProperty
+    private int pontosTotais;
 
 
     public int getForca(){
